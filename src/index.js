@@ -9,9 +9,27 @@ app.get('/', (request, response) => {
 });
 
 app.get('/users',(request,response)=>{
-    response.send([]);
+    response.status= 200;
+    response.sendStatus=200;
+    let aux;
+    aux= (data.length==0)?data:data[data.length-1];
+    response.send(data);
 });
 
+app.get('/user/:id',(request, response)=>{
+    response.sendStatus=200;
+    response.send({id:0})
+});
+
+app.post('/user',function(request,response){
+    response.status=200;
+	//const id=request.body.id;
+    response.send({
+        id:0//id
+    });
+    data.push({id:0})
+    
+});
 
 app.listen(3000, (err) => {
   if (err) {
