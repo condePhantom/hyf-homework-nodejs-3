@@ -16,13 +16,26 @@ app.get('/users',(request,response)=>{
     response.send(data);
 });
 
+app.delete('/user/:id',(request,response)=>{
+    const id= request.params.id;
+    let user="";
+    data.forEach((item,i)=>{
+        if(item.id==id){
+            user=data.splice(i,1);
+        }
+    });
+    response.statusCode=(user.length!=0)?202:204;
+    response.send((user.length!=0)?user[0]:[]);
+});
+
 app.get('/user/:id',(request, response)=>{
-    response.sendStatus=200;
+    response.statusCode=200;
+    console.log(request.params.id);
     response.send({id:0})
 });
 
 app.post('/user',function(request,response){
-    response.status=200;
+    response.statusCode=200;
 	//const id=request.body.id;
     response.send({
         id:0//id
